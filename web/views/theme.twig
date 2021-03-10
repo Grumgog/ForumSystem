@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Просмотр темы в {{theme.forum_name}}</title>
+        {% include 'header.html' %}
+    </head>
+    <body>
+        <div class="uk-flex uk-flex-center">
+            <h3>{{theme.title}} от {{theme.user_email}}</h3>
+        </div>
+        <div class="uk-flex uk-flex-center">
+            {{theme.content}}
+        </div>
+        <br>
+        <br>
+        <div class="uk-flex uk-flex-center">
+        <dl class="uk-description-list uk-description-list-divider">
+            {% for post in posts %}
+            <dt>{{post.user_email}}: {{post.title}}</dt>
+            <dd>{{post.content}}</dd>
+            {% endfor %}
+        </dl>
+        </div>
+        <div class="uk-flex uk-flex-center">
+            Вы зашли как {{userdata.login}}
+        </div>
+        <div class="uk-flex uk-flex-center">
+        <form action="/responseInTheme" method="post">
+            <span>Заголовок:</span><br>
+            <input name="title" type="text"></input><br>
+            <span>Сообщение:</span><br>
+            <textarea name="content"></textarea><br>
+            <input type="hidden" name="forum_id" value="{{theme.id}}"></input>
+            <input type="hidden" name="forum_name" value="{{forum_name}}"></input>
+            <input type="submit" value="Опубликовать"></input>
+        </form>
+        </div>
+    </body>
+</html>

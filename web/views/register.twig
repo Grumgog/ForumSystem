@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Регистрация</title>
+        {% include 'header.html' %}
+    </head>
+    <body>
+        <div>
+        Заполните информацию для {{purpose}} на сайте
+        </div>
+        <form action="/login/{{method}}" method="post">
+            <span>Логин:</span><br>
+            <input name="login" type="text"></input><br>
+            <span>Email:</span><br>
+            <input type="email" name="email"></input><br>
+            <span>Пароль:</span>
+            <input type="password" name="password"></input><br>
+            <input type="submit" value="Опубликовать"></input>
+        </form>
+    </body>
+</html>

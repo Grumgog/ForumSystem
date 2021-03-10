@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Привет!</title>
+        {% include 'header.html' %}
+    </head>
+    <body>
+        <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="/web/img/index.jpg" uk-img>
+            <h1>Тест-форум</h1>
+        </div>
+        <div class="uk-flex uk-flex-center">
+            <h1>Темы форума</h1>
+        </div>
+        {% if not userdata %}
+        <div class="uk-flex uk-flex-center">
+            <a href="/signup">Зарегестрироваться</a>
+        </div>
+        <div class="uk-flex uk-flex-center">
+            <a href="/signin">Зайти</a>
+        </div>
+        {% else %}
+        <div class="uk-flex uk-flex-center">
+            Добро пожаловать на форум, {{userdata.login}}
+        </div>
+        {% endif %}
+        <div class="uk-flex uk-flex-center">
+            <dl class="uk-description-list uk-description-list-divider">
+                {% for forum in forums %}
+                <dt><a href="/forum/{{forum.forum_name}}">{{forum.forum_name}}</a></dt>
+                <dd>{{forum.description}}</dd>
+                {% endfor %}
+            </dl>
+        </div>
+    </body>
+</html>
